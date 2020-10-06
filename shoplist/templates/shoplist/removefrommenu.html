@@ -1,0 +1,22 @@
+{% extends "shoplist/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+	<div class="col-md-7 text-center">
+		<!-- <form method="POST"> -->
+			{% csrf_token %}
+			{% for meal %}
+			<h2> Deleted {meal}? </h2>
+			{% endfor %}
+
+			
+			<a href="{% url 'meals' %}">Go back</a> 
+	<!-- 	</form>
+		 -->
+		
+	</div>
+</div>
+
+
+
+{% endblock %}

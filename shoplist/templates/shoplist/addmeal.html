@@ -1,0 +1,53 @@
+{% extends "shoplist/base.html" %}
+
+{% block content %}
+<a href="{% url 'generate' %}">Go back</a> 
+<div class="row justify-content-center mt-5">
+	<div class="col-md-7 text-center">
+		<h1>Add meal ingredients</h1>
+		
+		<br>
+		<br>
+		
+
+		<form method="POST">
+			{% csrf_token %}
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" name="name" class="form-control" id="name" required>
+			</div>
+			<div class="form-group">
+				<label for="servings">Servings</label>
+				<input type="text" name="servings" class="form-control" id="servings" required>
+			</div>
+
+			<div class="form-group">
+				<label for="ingredients">Ingredients</label>
+				<div class="row justify-content-center">
+					<div class="text-left">
+				<p>Please input ingredients on separate lines, followed by the amount. E.g...
+					<br>
+					<br>
+					Onion, 2<br>
+					Tinned tomatoes, 2 tins<br>
+					Pasta, 200g<br>
+					etc...<br>
+					<br>
+				</p>
+			</div>
+			</div>
+				<textarea name="ingredients" class="form-control" id="ingredients" rows="10" placeholder="Ingredient, Amount..."></textarea>
+			</div>
+
+
+			
+			<button type="submit" class ="btn btn-primary">Add</button> 
+			<br>
+			<br>
+		</form>
+	</div>
+</div>
+
+
+
+{% endblock %}

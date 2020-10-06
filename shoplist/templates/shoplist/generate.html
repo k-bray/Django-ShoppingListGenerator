@@ -1,0 +1,77 @@
+{% extends "shoplist/base.html" %}
+
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+
+	<div class="col-md-12 text-center">
+		<h1>Generate a shopping list</h1>
+		<br>
+		<p>Create a new meal, or select one from your existing meals and add it to your shopping list. Click 'Generate' when you're done... and voila!</p>
+	</div>
+	
+	<!-- <div class="container d-flex justify-content-around align-items-baseline h-100"> -->
+	<div class="container d-flex justify-content-center">
+
+		<div class="row col-lg-6">
+			<!-- <div class="col-md-12"> -->
+				<h2>My meals</h2>
+				<br>
+			<!-- </div> -->
+			<!-- <div class="col-md-12"> -->
+				<form method="POST">
+				{% csrf_token %}
+				{% for meal in meals %}
+				<ul>
+			
+					<li>
+					<a href="{% url 'viewmeal' meal.id %}">{{ meal.name }} (serves {{ meal.servings }})</a>
+				
+					<a role="button" class="btn btn-light" name="addtomenu" href="{% url 'addtomenu' meal.id %}">Add to menu</a>
+			
+				
+					</li>
+			
+				</ul>
+				{% endfor %}
+				<br>
+				<br>
+				<a role="button" class="btn btn-primary btn-block" name="newmeal" href="{% url 'addmeal' %}">New meal</a>
+				<!---<a role="button" class="btn btn-light btn-block" name="samplemeal" href="{% url 'samplemeals' %}">Add a sample meal</a>--->
+			
+				</form>
+			<!-- </div> -->
+		</div>
+
+	
+		<div class="row col-lg-6">
+			<div class="col-md-12">
+				<h2>On the menu</h2>
+				<br>
+				<p>Please note: only add each meal once, if you want to change the serving size please remove and re-add</p>
+			</div>
+			<div class="col-md-12">
+				<ul>
+				{% for meal in menu %}
+					<li>
+					{{ meal.meal }} ({{ meal.servings }} servings)
+					<a role="button" class="btn btn-warning" name="removefrommenu" href="{% url 'removefrommenu' meal.id %}">Remove</a>
+					</li>
+				{% endfor %}
+				</ul>
+			</div>
+
+			<div class="col-md-12">
+			
+				<p>Happy with your menu?</p> <a role="button" class="btn btn-primary" name="generate" href="{% url 'newshoppinglist' %}">Generate</a>
+		
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+{% endblock %}

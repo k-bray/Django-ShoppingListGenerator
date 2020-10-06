@@ -1,0 +1,20 @@
+{% extends "shoplist/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+	<div class="col-md-7 text-center">
+		<h1>Shopping lists</h1>
+		
+		{% for list in shoplists %}
+		<ul>
+			<li>
+				<a href="{% url 'mylist' list.id %}"> {{ list.datecreated }}</a>
+			</li>
+		</ul>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+{% endblock %}

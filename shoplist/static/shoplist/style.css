@@ -1,0 +1,35 @@
+/*Selector {
+	Property: value;
+}
+*/
+
+body, html {
+	background:
+		url(background-light4.jpg)
+		bottom center / cover
+		no-repeat
+		fixed
+		padding-box
+		content-box
+		white;
+
+
+	font-family: 'Raleway', sans-serif;
+	position: relative;
+
+	width: 100%;
+	height: 100%;
+}
+ 
+.btn-primary {
+	background-color: green;
+}
+
+.boxmodel {
+	border: 3px solid grey;
+	display: inline;
+	padding: 15px 15px;
+	margin: 0px 10px 10px 10px;
+	width: 600px;
+	height: 950px;
+}
